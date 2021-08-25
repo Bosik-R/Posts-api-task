@@ -2,15 +2,12 @@ import React, { useEffect, useState, useContext } from 'react';
 import { PostContext } from '../../utils/PostContext';
 import * as S from './Post.Elements';
 
-const Post = ({ match }) => {
+const Post = () => {
 	const [comments, setComments] = useState(null);
 	const { postData } = useContext(PostContext);
-	console.log('match', match);
 
-	console.log('data', comments);
-
-	const getPost = async (id) => {
-		const url = `https://jsonplaceholder.typicode.com/posts/${id}/comments`;
+	const getPost = async () => {
+		const url = `https://jsonplaceholder.typicode.com/posts/${postData.id}/comments`;
 		const method = {
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' },
@@ -22,14 +19,14 @@ const Post = ({ match }) => {
 	};
 
 	useEffect(() => {
-		getPost(postData.id);
+		getPost();
 	}, []);
 
 	return (
 		<S.Wrapper>
 			<S.Title>{postData.title}</S.Title>
 			<S.PostContent>{postData.body}</S.PostContent>
-			<S.Title>Comments</S.Title>
+			<S.CommentsWrapper>Comments</S.CommentsWrapper>
 			{!comments ? (
 				<S.Loading>Loading...</S.Loading>
 			) : (

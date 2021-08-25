@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ArrowIosForwardOutline } from '@styled-icons/evaicons-outline/ArrowIosForwardOutline';
 
 export const Wrapper = styled.header`
 	width: 100%;
@@ -23,21 +24,23 @@ export const DotsWrapper = styled.span`
 	top: 50%;
 	transform: translateY(-50%);
 	display: flex;
-	align-items: center;
-	//height: 100%;
 `;
 
 export const Dot = styled.div`
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 12px;
 	border-radius: 50%;
 	background-color: #858585;
 	margin-right: 8px;
+
+	&:hover {
+		background-color: #05a90a;
+	}
 `;
 
 export const Nav = styled.nav`
 	width: 100%;
-	padding: 5px 10px;
+	padding: 10px;
 `;
 
 export const Breadcrumb = styled(Link)`
@@ -47,8 +50,13 @@ export const Breadcrumb = styled(Link)`
 	color: #000000;
 `;
 
-export const Separator = styled(Breadcrumb)``;
+export const Separator = styled(ArrowIosForwardOutline)`
+	height: 16px;
+	margin: 0 7px;
+	padding-bottom: 2px;
+`;
 
-export const LinkTitle = styled(Breadcrumb)`
+export const LinkTitle = styled.span`
+	margin: 0 7px;
 	color: #787878;
 `;

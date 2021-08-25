@@ -9,18 +9,27 @@ export const Title = styled.h1`
 	padding: 50px 20px 20px 20px;
 `;
 
+export const Loading = styled(Title)``;
+
 export const PostContent = styled.p`
 	padding: 20px;
 	margin-bottom: 30px;
 `;
 
-export const Loading = styled(Title)``;
-
-export const Comment = styled.article`
-	margin-bottom: 20px;
+export const CommentsWrapper = styled.ul`
+	font-size: 20px;
+	font-weight: bolder;
+	margin: 20px;
+	padding: 0;
 `;
 
-export const CommentName = styled.h2`
+export const Comment = styled.li`
+	padding: 0;
+	margin-bottom: 20px;
+	list-style: none;
+`;
+
+export const CommentName = styled.h5`
 	margin: 20px;
 `;
 

@@ -13,16 +13,19 @@ export const Wrapper = styled.section`
 export const PostLink = styled.div`
 	max-width: 600px;
 	width: 100%;
-	padding: 10px;
+	padding: 15px;
 	border: 1px solid #5c5c5c;
 	margin-bottom: 30px;
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+	margin: 10px;
+	padding-bottom: 20px;
+`;
 export const Content = styled.p``;
 
 export const Button = styled(Link)`
-	padding: 5px 10px;
+	padding: 10px 20px;
 	float: right;
 	border: 1px solid #5c5c5c;
 	border-radius: 10px;
@@ -30,9 +33,15 @@ export const Button = styled(Link)`
 	background-color: inherit;
 	transition: all 300ms ease;
 	cursor: pointer;
+	text-decoration: none;
+	color: #000000;
+	background-position: 100% 0;
+	background-image: linear-gradient(90deg, #5c5c5c 50%, transparent 50%);
+	background-size: 300%;
+	transition: all 0.5s ease-in-out;
 
 	&:hover {
-		background-color: #3aa435;
+		background-position: 1% 100%;
 		color: #ffffff;
 	}
 `;

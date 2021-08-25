@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, BrowserRouter } from 'react-router-dom';
-import { AnimatedSwitch } from 'react-router-transition';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './components/Header/Header';
 import MainPage from './components/MainPage/MainPage';
@@ -23,17 +22,18 @@ const Wrapper = styled.div`
 
 const Loading = styled.h1``;
 
+const url = 'https://jsonplaceholder.typicode.com/posts';
+
+const method = {
+	method: 'GET',
+	headers: { 'Content-Type': 'application/json' },
+};
+
 function App() {
 	const [posts, setPosts] = useState(null);
 	const [postData, setPostData] = useState(postDataContext);
 
 	const getPosts = async () => {
-		const url = 'https://jsonplaceholder.typicode.com/posts';
-		const method = {
-			method: 'GET',
-			headers: { 'Content-Type': 'application/json' },
-		};
-
 		const response = await fetch(url, method);
 		const data = await response.json();
 		setPosts(data);
@@ -50,19 +50,10 @@ function App() {
 					<BrowserRouter>
 						<Header />
 						{posts ? (
-							<AnimatedSwitch
-								atEnter={{
-									opacity: 0,
-								}}
-								atLeave={{
-									opacity: 0,
-								}}
-								atActive={{
-									opacity: 1,
-								}}>
+							<Switch>
 								<Route exact path='/' component={MainPage} />
-								<Route pat='/posts/:id' component={Post} />
-							</AnimatedSwitch>
+								<Route path='/posts/:id' component={Post} />
+							</Switch>
 						) : (
 							<Loading>Loading...</Loading>
 						)}
